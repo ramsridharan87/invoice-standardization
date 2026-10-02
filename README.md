@@ -17,9 +17,21 @@ test/                       tests and invoice fixtures
 
 ## Getting started
 
+Requires Node 24+ (uses the built-in `node:sqlite`).
+
 ```
 npm install
 cp .env.example .env   # fill in Intuit sandbox keys
 npm run dev
 npm test
 ```
+
+## Connecting a QuickBooks sandbox company
+
+1. In the Intuit developer portal, add `http://localhost:3000/connect/quickbooks/callback`
+   as a redirect URI on the app's Development keys.
+2. `npm run dev`, open http://localhost:3000, click **Connect to QuickBooks**, and pick
+   the sandbox company.
+3. Back on the home page, follow **raw invoices** to see QBO's unmodified Invoice JSON.
+
+The server binds to 127.0.0.1 only — the `/dev` routes return supplier data without auth.
